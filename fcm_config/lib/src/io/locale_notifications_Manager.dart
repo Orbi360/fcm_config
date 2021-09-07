@@ -1,12 +1,4 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:http/http.dart' as http;
-import '../fcm_extension.dart';
+part of 'fcm_config.dart';
 
 class LocaleNotificationManager {
   static StreamSubscription<RemoteMessage>? _subscription;
@@ -135,6 +127,7 @@ class LocaleNotificationManager {
       category: _notification.category,
       groupKey: _notification.collapseKey,
       showProgress: false,
+      color: _notification.getAndroidColor(),
       sound: _notification.isDefaultAndroidSound
           ? null
           : (_notification.isAndroidRemoteSound
